@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0d6efd">
+    <title>LocalShop PWA - SSR</title>
+
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/app.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>LocalShop PWA</h1>
+        <p>Catálogo con Spring Boot y Thymeleaf</p>
+        <button id="btnGeo">Obtener ubicación</button>
+        <p id="status-location" role="status"></p>
+    </header>
+
+    <main>
+        <h2>Catálogo de productos</h2>
+        <section class="productos">
+            <article class="producto"
+                     th:each="producto : ${productos}">
+                <h3 th:text="${producto.nombre}">Nombre</h3>
+                <p th:text="${producto.descripcion}">Descripción</p>
+                <strong th:text="${'$' + producto.precio}">$0</strong>
+            </article>
+        </section>
+    </main>
+</body>
+</html>
